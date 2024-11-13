@@ -32,7 +32,6 @@ public class hitungHari extends javax.swing.JFrame {
         }
     });
 
-    // Listener untuk JSpinner (tahun)
     jSpinner1.addChangeListener(new ChangeListener() {
         @Override
         public void stateChanged(ChangeEvent e) {
@@ -40,22 +39,18 @@ public class hitungHari extends javax.swing.JFrame {
         }
     });
 
-    // Set tanggal awal dari JComboBox dan JSpinner ke JCalendar
     updateCalendarDate();
 }
 
-// Method untuk mengupdate tanggal JCalendar sesuai dengan JComboBox dan JSpinner
 private void updateCalendarDate() {
     int tahun = (int) jSpinner1.getValue();
-    int bulanIndex = jComboBox1.getSelectedIndex(); // Index dimulai dari 0
+    int bulanIndex = jComboBox1.getSelectedIndex();
 
-    // Mengatur tanggal ke hari pertama dari bulan dan tahun yang dipilih
     Calendar calendar = Calendar.getInstance();
     calendar.set(Calendar.YEAR, tahun);
     calendar.set(Calendar.MONTH, bulanIndex);
     calendar.set(Calendar.DAY_OF_MONTH, 1);
 
-    // Mengupdate tanggal di JCalendar
     jCalendar1.setDate(calendar.getTime());
     }
     
@@ -242,14 +237,13 @@ private void updateCalendarDate() {
             int year = calendar.get(Calendar.YEAR);
             int month = calendar.get(Calendar.MONTH);
 
-            jSpinner1.setValue(year);      // Update nilai JSpinner untuk tahun
-            jComboBox1.setSelectedIndex(month); // Update nilai JComboBox untuk bulan
+            jSpinner1.setValue(year);
+            jComboBox1.setSelectedIndex(month);
         }
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (jCalendar1.getDate().getTime() == 0) {
-            // Jika JCalendar belum diatur, gunakan nilai dari JComboBox dan JSpinner
             int tahun = (int) jSpinner1.getValue();
             int bulanIndex = jComboBox1.getSelectedIndex() + 1;
             int jumlahHari = LocalDate.of(tahun, bulanIndex, 1).lengthOfMonth();
@@ -257,7 +251,6 @@ private void updateCalendarDate() {
 
             System.out.println("Menggunakan pilihan dari JComboBox dan JSpinner - Tahun: " + tahun + ", Bulan: " + bulanIndex);
         } else {
-            // Jika tanggal dipilih di JCalendar
             java.util.Date selectedDate = jCalendar1.getDate();
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(selectedDate);
@@ -280,7 +273,7 @@ private void updateCalendarDate() {
     jLabel5.setText("");
     jComboBox1.setSelectedIndex(0);
     jSpinner1.setValue(2023);
-    jCalendar1.setDate(null); // Atur ke null untuk menghapus tanggal yang dipilih
+    jCalendar1.setDate(null);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
